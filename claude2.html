@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When Your Processor Says 'Hold,' Keep Getting Paid | Stripe Protection</title>
+    <meta name="description" content="Avoid catastrophic payment processor freezes. Get underwritten merchant accounts with multi-MID redundancy. Keep cash flowing even when one account has issues.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="When Your Processor Says 'Hold,' Keep Getting Paid">
+    <meta property="og:description" content="Underwrite-first placement with 30+ banks. Multiple merchant accounts, one gateway, automatic routing.">
+    <meta property="og:type" content="website">
+    
+    <!-- JSON-LD FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What's the application process?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "One application covers multiple accounts. We collect your business model, volume, and risk profile to direct underwriting to the right banks that understand your industry."
+                }
+            },
+            {
+                "@type": "Question", 
+                "name": "Do I really need multiple accounts?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "If you process $50k+/month, sell high-ticket items, have recurring/continuity models, or face seasonal spikes - yes. Diversification prevents catastrophic cash flow disruption."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I bring my existing accounts?", 
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes - we can route your existing merchant accounts through our gateway alongside new placements for complete redundancy."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --brand-green: #1C9C48;
+            --brand-blue-primary: #4169B2; /* TODO: Confirm exact blue from brand guide */
+            --brand-blue-dark: #1F4DA1; /* TODO: Confirm exact blue from brand guide */  
+            --brand-diamond: #B1D1F5;
+            --brand-platinum: #CCCCCC;
+            --ink: #0E0E0E;
+            --almost-black: #4B4B4B;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--ink);
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .hero {
+            background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-blue-primary) 100%);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero .subhead {
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: var(--white);
+            color: var(--brand-green);
+            padding: 16px 32px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            color: var(--white);
+            text-decoration: underline;
+            margin-left: 24px;
+            font-size: 1.125rem;
+            opacity: 0.9;
+        }
+
+        /* Risk Explainer */
+        .explainer {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .explainer h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: var(--brand-blue-dark);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .risk-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .risk-point {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--brand-green);
+        }
+
+        .risk-point h3 {
+            color: var(--brand-blue-dark);
+            margin-bottom: 16px;
+            font-size: 1.25rem;
+        }
+
+        /* Difference Section */
+        .difference {
+            background: var(--white);
+            padding: 80px 0;
+        }
+
+        .difference h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: var(--brand-green);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .diff-item {
+            text-align: center;
+            padding: 32px 24px;
+        }
+
+        .diff-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--brand-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .diff-item h3 {
+            color: var(--brand-blue-dark);
+            margin-bottom: 16px;
+            font-size: 1.25rem;
+        }
+
+        /* Who We Help */
+        .who-we-help {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .who-we-help h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: var(--brand-blue-dark);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .industry-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+
+        .chip {
+            background: var(--white);
+            color: var(--brand-blue-dark);
+            padding: 12px 20px;
+            border-radius: 24px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 2px solid var(--brand-diamond);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: var(--white);
+            padding: 80px 0;
+        }
+
+        .how-it-works h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: var(--brand-blue-dark);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 40px 24px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .step-number {
+            background: var(--brand-green);
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 24px;
+        }
+
+        .step h3 {
+            color: var(--brand-blue-dark);
+            margin-bottom: 16px;
+            font-size: 1.25rem;
+        }
+
+        /* FAQ */
+        .faq {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .faq h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: var(--brand-blue-dark);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 16px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            padding: 24px;
+            font-weight: 600;
+            color: var(--brand-blue-dark);
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+
+        .faq-answer {
+            padding: 0 24px 24px;
+            color: var(--almost-black);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--brand-blue-dark) 0%, var(--brand-green) 100%);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 24px;
+        }
+
+        .final-cta p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--almost-black);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+
+        .footer a {
+            color: var(--brand-diamond);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .cta-secondary {
+                display: block;
+                margin: 16px 0 0 0;
+            }
+            
+            .industry-chips {
+                justify-content: flex-start;
+            }
+        }
+
+        /* Analytics & UTM tracking */
+        .cta-primary[data-cta="get-started"] {
+            /* Style for tracking primary CTA clicks */
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>When Your Processor Says 'Hold,' Keep Getting Paid</h1>
+            <p class="subhead">Stop gambling with your cash flow. Get underwritten merchant accounts with multi-MID redundancy and automatic routing.</p>
+            <a href="#" class="cta-primary" data-cta="get-started">Get Started</a>
+            <a href="#risk-explainer" class="cta-secondary">How risk really works</a>
+        </div>
+    </section>
+
+    <!-- Risk Explainer -->
+    <section class="explainer" id="risk-explainer">
+        <div class="container">
+            <h2>Why "Fast Setup" Leads to Frozen Accounts</h2>
+            <div class="risk-points">
+                <div class="risk-point">
+                    <h3>Fast setup → post-approval controls</h3>
+                    <p>Aggregators approve quickly with minimal underwriting, then manage risk through holds, reserves, and sudden closures when they get nervous.</p>
+                </div>
+                <div class="risk-point">
+                    <h3>Chargebacks arrive months later</h3>
+                    <p>Disputes can hit 6+ months after delivery. Processors carry liability if merchants disappear—hence aggressive controls without proper underwriting.</p>
+                </div>
+                <div class="risk-point">
+                    <h3>Category derisking impacts entire verticals</h3>
+                    <p>MCC-based restrictions can shut down whole industries overnight. Processors exit verticals they don't understand, leaving merchants stranded.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Difference Section -->
+    <section class="difference">
+        <div class="container">
+            <h2>The Difference: Underwrite First, Protect Always</h2>
+            <div class="diff-grid">
+                <div class="diff-item">
+                    <div class="diff-icon">🏦</div>
+                    <h3>30+ Banks That Understand Your Model</h3>
+                    <p>We work with banks that specialize in your industry and do proper underwriting before you start processing.</p>
+                </div>
+                <div class="diff-item">
+                    <div class="diff-icon">🔄</div>
+                    <h3>Multiple Accounts, One Gateway</h3>
+                    <p>Automatic routing across multiple merchant accounts. If one has issues, transactions continue flowing through others.</p>
+                </div>
+                <div class="diff-item">
+                    <div class="diff-icon">🎯</div>
+                    <h3>Single Point of Contact</h3>
+                    <p>One team optimizes fees, reduces declines, and helps with chargebacks across all your accounts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Help -->
+    <section class="who-we-help">
+        <div class="container">
+            <h2>Industries We Specialize In</h2>
+            <div class="industry-chips">
+                <span class="chip">Continuity & Memberships</span>
+                <span class="chip">Telehealth & GLP-1</span>
+                <span class="chip">Supplements</span>
+                <span class="chip">Coaching & Education</span>
+                <span class="chip">Digital Utilities</span>
+                <span class="chip">Tech Support</span>
+                <span class="chip">Vape & CBD</span>
+                <span class="chip">High-Ticket E-com</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Get Started</h3>
+                    <p>One application covers multiple accounts. We collect your business model, volume, and risk profile to direct underwriting.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Right-Fit Underwriting</h3>
+                    <p>We place you with banks across our network of 30+ partners that understand and specialize in your business model.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Route & Protect</h3>
+                    <p>Multiple merchant accounts integrated into one gateway with automatic routing and real-time redundancy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">What's the application process?</div>
+                <div class="faq-answer">One application covers multiple accounts. We collect your business model, volume, AOV, fulfillment approach, and dispute history to direct underwriting to the right banks that understand your industry.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do I really need multiple accounts?</div>
+                <div class="faq-answer">If you process $50k+/month, sell high-ticket items, have recurring/continuity models, face seasonal spikes, or operate in regulated verticals—yes. Diversification prevents catastrophic cash flow disruption.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Can I bring my existing accounts?</div>
+                <div class="faq-answer">Absolutely. We can route your existing merchant accounts through our gateway alongside new placements for complete redundancy and unified management.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Stop Gambling With Your Cash Flow</h2>
+            <p>Get a placement plan that protects your business from payment processor disruption.</p>
+            <a href="#" class="cta-primary" data-cta="get-started">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Not affiliated with Stripe, Inc. "Stripe" is a trademark of Stripe, Inc.</p>
+            <p style="margin-top: 16px;"><a href="#">Privacy Policy</a> | Logos shown in grayscale with permission</p>
+        </div>
+    </footer>
+
+    <script>
+        // UTM Parameter Capture
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const utmData = {
+                utm_source: urlParams.get('utm_source') || '',
+                utm_medium: urlParams.get('utm_medium') || '', 
+                utm_campaign: urlParams.get('utm_campaign') || '',
+                utm_content: urlParams.get('utm_content') || ''
+            };
+            
+            // Store in localStorage
+            localStorage.setItem('utmData', JSON.stringify(utmData));
+            
+            // Add to any forms as hidden fields when they exist
+            function addUTMToForms() {
+                const forms = document.querySelectorAll('form');
+                forms.forEach(form => {
+                    Object.keys(utmData).forEach(key => {
+                        if (utmData[key]) {
+                            const input = document.createElement('input');
+                            input.type = 'hidden';
+                            input.name = key;
+                            input.value = utmData[key];
+                            form.appendChild(input);
+                        }
+                    });
+                });
+            }
+            
+            // Run when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', addUTMToForms);
+            } else {
+                addUTMToForms();
+            }
+        })();
+
+        // CTA Click Tracking
+        document.querySelectorAll('[data-cta="get-started"]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Track click event
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'click', {
+                        event_category: 'CTA',
+                        event_label: 'get-started'
+                    });
+                }
+                
+                // Add any other analytics tracking here
+                console.log('Get Started CTA clicked');
+            });
+        });
+    </script>
+</body>
+</html>
