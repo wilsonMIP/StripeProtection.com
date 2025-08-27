@@ -79,6 +79,12 @@
             padding: 0 24px;
         }
 
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+        }
+
         /* Enhanced Hero with Urgency */
         .hero {
             background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-blue-primary) 100%);
@@ -151,23 +157,45 @@
 
         .cta-primary {
             display: inline-block;
-            background: var(--white);
-            color: var(--brand-green);
+            background: var(--warning-orange);
+            color: var(--white);
             padding: 20px 40px;
             text-decoration: none;
             border-radius: 12px;
             font-size: 1.25rem;
             font-weight: 700;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 25px rgba(249, 158, 11, 0.4);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            border: 3px solid var(--warning-orange);
+            position: relative;
+            overflow: hidden;
         }
 
         .cta-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.25);
-            background: #f8f9fa;
+            box-shadow: 0 12px 35px rgba(249, 158, 11, 0.6);
+            background: #e88b00;
+            border-color: #e88b00;
+        }
+
+        .cta-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease;
+        }
+
+        .cta-primary:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         /* Trusted By Section */
@@ -543,17 +571,146 @@
                 padding: 0 16px;
             }
             
+            .hero {
+                padding: 60px 0 50px;
+            }
+            
+            .hero h1 {
+                font-size: clamp(2rem, 8vw, 2.75rem);
+                line-height: 1.1;
+                margin-bottom: 20px;
+            }
+            
+            .hero .power-subhead {
+                font-size: clamp(1.125rem, 4vw, 1.375rem);
+                margin-bottom: 12px;
+            }
+            
+            .hero .proof-line {
+                font-size: clamp(1rem, 3vw, 1.25rem);
+                margin-bottom: 30px;
+            }
+            
+            .cta-primary {
+                padding: 16px 32px;
+                font-size: 1.125rem;
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+            
             .client-logos {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
             
+            .client-logo {
+                padding: 16px;
+            }
+            
+            .client-logo img {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 12px;
+            }
+            
+            .client-name {
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+            
+            .client-title {
+                font-size: 0.75rem;
+            }
+            
             .disaster-stories {
                 grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .disaster-card {
+                padding: 24px 20px;
+            }
+            
+            .power-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .power-feature {
+                padding: 40px 24px;
+            }
+            
+            .power-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                margin-bottom: 20px;
             }
             
             .testimonial-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .testimonial-card {
+                padding: 30px 24px;
+            }
+            
+            /* Video testimonials mobile */
+            .video-grid {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+            
+            .video-testimonial {
+                margin: 0 !important;
+            }
+            
+            /* Section padding adjustments */
+            .trusted-by, 
+            .problem-section, 
+            .solution-power, 
+            .social-proof, 
+            .final-cta,
+            .video-testimonials {
+                padding: 60px 0 !important;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .step {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+            
+            .client-logos {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .client-logo {
+                padding: 12px;
+            }
+            
+            .disaster-card {
+                padding: 20px 16px;
+            }
+            
+            .power-feature {
+                padding: 30px 16px;
+            }
+            
+            .testimonial-card {
+                padding: 24px 16px;
             }
         }
 
@@ -606,7 +763,7 @@
                 <h1>Never Lose a Sale to Payment Processor Holds Again</h1>
                 <p class="power-subhead">The Multi-Bank Redundancy System That Keeps 8-Figure Businesses Running</p>
                 <p class="proof-line">Trusted by Frank Kern, Ryan Pineda, Fortune Builders & More</p>
-                <a href="#" class="cta-primary" data-cta="get-started">Get Protected Now</a>
+                <a href="#" class="cta-primary" data-cta="get-started" style="position: relative; z-index: 2;">Get Protected Now</a>
             </div>
         </div>
     </section>
@@ -831,7 +988,7 @@
                 <li>One application covers all accounts - no multiple bank meetings</li>
             </ul>
             
-            <a href="#" class="cta-primary" data-cta="get-started">Get Protected Now</a>
+            <a href="#" class="cta-primary" data-cta="get-started" style="position: relative; z-index: 2;">Get Protected Now</a>
             
             <p style="margin-top: 30px; font-size: 1.125rem; color: var(--almost-black);">
                 Join 500+ businesses processing $2.8B+ annually with bulletproof payment redundancy
