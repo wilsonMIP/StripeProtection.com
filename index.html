@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StripeProtection.com - Landing Page Testing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 100px auto;
+      padding: 40px;
+      text-align: center;
+      background: #f8f9fa;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .test-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .test-btn {
+      padding: 15px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+    .gpt-btn {
+      background: #4169B2;
+      color: white;
+    }
+    .anthropic-btn {
+      background: #1C9C48;
+      color: white;
+    }
+    .test-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .description {
+      margin-top: 30px;
+      color: #666;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <h1>StripeProtection.com A/B Testing</h1>
+  
+  <div class="description">
+    <p>Two different landing page approaches for the same service:</p>
+    <p><strong>GPT Version:</strong> Professional, feature-focused approach<br>
+    <strong>Anthropic Version:</strong> Problem-focused, story-driven approach</p>
+  </div>
+  
+  <div class="test-buttons">
+    <a href="/gpt.html" class="test-btn gpt-btn">
+      Test GPT Version
+    </a>
+    <a href="/anthropic.html" class="test-btn anthropic-btn">
+      Test Anthropic Version
+    </a>
+  </div>
+  
+  <div class="description">
+    <p style="margin-top: 40px; font-size: 14px; color: #888;">
+      Both versions connect to the same live EMAP system for lead capture.
+    </p>
+  </div>
+</body>
+</html>

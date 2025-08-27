@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe Holding Your Money? There's a Better Way | Easy Pay Direct</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1C9C48 0%, #4169B2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 400px;
+            margin-bottom: 30px;
+        }
+
+        .headline {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subheadline {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #1C9C48;
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            background: #158a3e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .problem-content h2 {
+            font-size: 2.5rem;
+            color: #1F4DA1;
+            margin-bottom: 25px;
+        }
+
+        .problem-story {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid #dc3545;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .problem-story h3 {
+            color: #dc3545;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .problem-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .problem-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .problem-list li:before {
+            content: "✗";
+            color: #dc3545;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .solution-content h2 {
+            font-size: 2.5rem;
+            color: #1C9C48;
+            margin-bottom: 25px;
+        }
+
+        .solution-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .solution-features li {
+            padding: 15px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .solution-features li:before {
+            content: "✓";
+            color: #1C9C48;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #1C9C48, #4169B2);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .highlight-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        /* How it Works */
+        .how-it-works {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1F4DA1;
+            margin-bottom: 50px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .step {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .step-number {
+            background: #1C9C48;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            color: #1F4DA1;
+            margin-bottom: 15px;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .testimonial {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 5px solid #1C9C48;
+        }
+
+        .testimonial blockquote {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #1F4DA1;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #1F4DA1 0%, #1C9C48 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .headline {
+                font-size: 2rem;
+            }
+            
+            .problem-grid,
+            .solution-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tagline {
+            background: #1C9C48;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .logo-placeholder {
+            width: 400px;
+            height: 80px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Tagline Bar -->
+    <div class="tagline">
+        We're Here to Make Things Easier
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <!-- Logo placeholder - replace with actual EPD logo -->
+            <div class="logo-placeholder">
+                Easy Pay Direct Logo
+            </div>
+            
+            <h1 class="headline">Stripe Holding Your Money?</h1>
+            <p class="subheadline">Stop gambling with your cash flow. Get the fastest SAFE way to accept payments.</p>
+            <a href="#get-started" class="cta-button">Get Started - It's FREE</a>
+        </div>
+    </header>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="problem-grid">
+                <div class="problem-content">
+                    <h2>Sound Familiar?</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 30px;">Every year, <strong>MILLIONS</strong> of businesses lose their ability to accept payments without warning.</p>
+                    
+                    <ul class="problem-list">
+                        <li><strong>Account frozen overnight</strong> - with no clear explanation</li>
+                        <li><strong>Funds held for 120+ days</strong> - killing your cash flow</li>
+                        <li><strong>Zero human support</strong> - just automated responses</li>
+                        <li><strong>Business nearly destroyed</strong> - because you can't accept payments</li>
+                    </ul>
+                </div>
+                
+                <div class="problem-story">
+                    <h3>"My Stripe Nightmare"</h3>
+                    <p><em>"Stripe held my money for more than 120 days... I had to borrow money to pay employees. They gave me no clear timeline, just kept asking for more documents. My business almost didn't survive."</em></p>
+                    <p style="margin-top: 15px; color: #666;">- Real merchant story from Reddit</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>Here's Why This Happens</h3>
+                <p>PayPal, Stripe, and Square let you get setup quickly because they don't do any underwriting. They don't know who you are or understand your business. When they get nervous, their ONLY option is to freeze your account or hold your money.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <div class="solution-grid">
+                <div class="solution-content">
+                    <h2>There's a Better Way</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 30px;">Easy Pay Direct works with <strong>30+ banks</strong> that do real underwriting. They get to know your business BEFORE you start processing.</p>
+                    
+                    <ul class="solution-features">
+                        <li><strong>Multiple merchant accounts</strong> - with different banks for true protection</li>
+                        <li><strong>Proper underwriting upfront</strong> - so banks understand your business</li>
+                        <li><strong>Automatic transaction routing</strong> - if one account has issues, others keep running</li>
+                        <li><strong>Human support</strong> - real people you can call, text, or email</li>
+                        <li><strong>Single point of contact</strong> - we handle everything for you</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <div class="highlight-box">
+                        <h3>One Application. Multiple Accounts. Total Protection.</h3>
+                        <p>We built a gateway that allows you to put multiple merchant accounts into it and automatically distribute your volume across them. That way, if one account gets shut down or has an issue - the others are still up and running.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How We Protect Your Cash Flow</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Proper Underwriting</h3>
+                    <p>We work with banks that take time to understand your business model, industry, and specific needs - not just approve everyone quickly.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Multiple Bank Relationships</h3>
+                    <p>We set you up with merchant accounts at different banks - each specializing in businesses like yours.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Smart Transaction Routing</h3>
+                    <p>Our gateway automatically distributes transactions across your accounts. If one has issues, your business doesn't skip a beat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; color: #1F4DA1; margin-bottom: 50px;">Real Results</h2>
+            
+            <div class="testimonial">
+                <blockquote>"After Stripe shut us down with no warning, Easy Pay Direct got us back up and running in 48 hours. Now we have three merchant accounts and never worry about our cash flow again."</blockquote>
+                <div class="testimonial-author">— E-commerce Business Owner</div>
+            </div>
+            
+            <div class="testimonial">
+                <blockquote>"We went from one account that could be shut down anytime to a diversified setup that's bulletproof. The peace of mind alone is worth it."</blockquote>
+                <div class="testimonial-author">— SaaS Company Founder</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="get-started">
+        <div class="container">
+            <h2>Stop Gambling With Your Business</h2>
+            <p>You focus on making money - we make sure it ends up in your bank account.</p>
+            <a href="https://www.easypaydirect.com/emap/" class="cta-button" style="background: white; color: #1F4DA1;">Get Started - Apply Now</a>
+            <p style="margin-top: 20px; font-size: 1rem;">One application. Multiple accounts. Total protection.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Call us: (800) 805-4949 | Email: ncs@easypaydirect.com</p>
+        </div>
+    </section>
+</body>
+</html>
