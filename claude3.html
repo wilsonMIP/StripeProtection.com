@@ -189,35 +189,60 @@
 
         .client-logos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px 60px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
             align-items: center;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .client-logo {
             text-align: center;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--almost-black);
-            opacity: 0.8;
             transition: all 0.3s ease;
             padding: 20px;
-            border: 2px solid transparent;
-            border-radius: 8px;
+            border: 3px solid transparent;
+            border-radius: 16px;
+            background: var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         .client-logo:hover {
-            opacity: 1;
-            border-color: var(--brand-diamond);
-            transform: translateY(-2px);
+            border-color: var(--brand-green);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
-        .client-logo.highlight {
-            color: var(--brand-green);
-            font-size: 1.375rem;
-            opacity: 1;
+        .client-logo img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 16px;
+            border: 3px solid var(--brand-diamond);
+            transition: all 0.3s ease;
+        }
+
+        .client-logo:hover img {
+            border-color: var(--brand-green);
+            transform: scale(1.05);
+        }
+
+        .client-name {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--brand-blue-dark);
+            margin-bottom: 8px;
+        }
+
+        .client-title {
+            font-size: 0.875rem;
+            color: var(--almost-black);
+            opacity: 0.8;
+        }
+
+        .client-logo.highlight img {
+            border-color: var(--brand-green);
+            box-shadow: 0 0 20px rgba(28, 156, 72, 0.3);
         }
 
         /* Problem Section with Enhanced Urgency */
@@ -555,6 +580,21 @@
             width: 300px;
             height: 300px;
         }
+
+        /* Video Testimonial Enhancements */
+        .video-testimonial:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2) !important;
+            border-color: var(--brand-green) !important;
+        }
+
+        .video-testimonial iframe {
+            transition: all 0.3s ease;
+        }
+
+        .video-testimonial:hover iframe {
+            transform: scale(1.02);
+        }
     </style>
 </head>
 <body>
@@ -576,15 +616,59 @@
         <div class="container">
             <h3>Trusted by Industry Leaders</h3>
             <div class="client-logos">
-                <div class="client-logo highlight">Frank Kern</div>
-                <div class="client-logo highlight">Ryan Pineda</div>
-                <div class="client-logo">Tony Robbins</div>
-                <div class="client-logo">Fortune Builders</div>
-                <div class="client-logo">Ben Greenfield</div>
-                <div class="client-logo">MawerCapital</div>
-                <div class="client-logo">CleverINVESTOR</div>
-                <div class="client-logo">AGORA FINANCIAL</div>
-                <div class="client-logo">InfusionSoft</div>
+                <div class="client-logo highlight">
+                    <img src="/assets/kern.png" alt="Frank Kern">
+                    <div class="client-name">Frank Kern</div>
+                    <div class="client-title">Digital Marketing Legend</div>
+                </div>
+                
+                <div class="client-logo highlight">
+                    <img src="/assets/Tony-Robbins-2024-900x.avif" alt="Tony Robbins">
+                    <div class="client-name">Tony Robbins</div>
+                    <div class="client-title">Peak Performance Coach</div>
+                </div>
+                
+                <div class="client-logo">
+                    <img src="/assets/Russell-Brunson-e1648466072798.png" alt="Russell Brunson">
+                    <div class="client-name">Russell Brunson</div>
+                    <div class="client-title">ClickFunnels Co-Founder</div>
+                </div>
+                
+                <div class="client-logo">
+                    <img src="/assets/Roland-Frasier-copy-2.png" alt="Roland Frasier">
+                    <div class="client-name">Roland Frasier</div>
+                    <div class="client-title">Digital Marketer Co-Founder</div>
+                </div>
+                
+                <div class="client-logo">
+                    <img src="/assets/ryan moran.jpeg" alt="Ryan Moran">
+                    <div class="client-name">Ryan Moran</div>
+                    <div class="client-title">Capitalism.com Founder</div>
+                </div>
+                
+                <div class="client-logo">
+                    <img src="/assets/hal elrod.png" alt="Hal Elrod">
+                    <div class="client-name">Hal Elrod</div>
+                    <div class="client-title">Miracle Morning Author</div>
+                </div>
+                
+                <div class="client-logo">
+                    <img src="/assets/assaraf.jpeg" alt="John Assaraf">
+                    <div class="client-name">John Assaraf</div>
+                    <div class="client-title">NeuroGym CEO</div>
+                </div>
+                
+                <div class="client-logo">
+                    <img src="/assets/Jason_RB-30-no-BG.png" alt="Jason Capital">
+                    <div class="client-name">Jason Capital</div>
+                    <div class="client-title">High Status Training</div>
+                </div>
+                
+                <div class="client-logo">
+                    <img src="/assets/Mawer capital.png" alt="Mawer Capital">
+                    <div class="client-name">Mawer Capital</div>
+                    <div class="client-title">Investment Management</div>
+                </div>
             </div>
         </div>
     </section>
@@ -649,6 +733,51 @@
                     <p>Banks know your business model upfront. No surprises. No sudden policy changes. No account freezes.</p>
                     <div class="benefit">PREDICTABLE CASH FLOW</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Testimonials Section -->
+    <section class="video-testimonials" style="background: var(--white); padding: 100px 0;">
+        <div class="container">
+            <h2 style="text-align: center; font-size: clamp(2.5rem, 5vw, 3.5rem); color: var(--brand-blue-dark); margin-bottom: 24px; font-weight: 800;">Watch What Our Clients Say</h2>
+            <p style="text-align: center; font-size: 1.25rem; color: var(--almost-black); margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto;">Real entrepreneurs sharing how multi-bank redundancy saved their businesses</p>
+            
+            <div class="video-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px;">
+                
+                <!-- Mix Testimonial -->
+                <div class="video-testimonial" style="background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border: 3px solid var(--brand-diamond); transition: all 0.3s ease;">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <iframe src="https://www.youtube.com/embed/fJhlE4U0_M8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div style="padding: 24px; text-align: center;">
+                        <h4 style="color: var(--brand-blue-dark); font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Client Success Story</h4>
+                        <p style="color: var(--almost-black); font-size: 0.875rem; opacity: 0.8;">Real results from multi-bank payment processing</p>
+                    </div>
+                </div>
+
+                <!-- Jason Fladlien Testimonial -->
+                <div class="video-testimonial" style="background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border: 3px solid var(--brand-green); transition: all 0.3s ease;">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <iframe src="https://www.youtube.com/embed/HxDjH6GFhJM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div style="padding: 24px; text-align: center;">
+                        <h4 style="color: var(--brand-blue-dark); font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Jason Fladlien</h4>
+                        <p style="color: var(--almost-black); font-size: 0.875rem; opacity: 0.8;">Webinar & Marketing Expert</p>
+                    </div>
+                </div>
+
+                <!-- Roland Frasier Testimonial -->
+                <div class="video-testimonial" style="background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border: 3px solid var(--brand-green); transition: all 0.3s ease;">
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <iframe src="https://www.youtube.com/embed/JL1xdEgP3wY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div style="padding: 24px; text-align: center;">
+                        <h4 style="color: var(--brand-blue-dark); font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Roland Frasier</h4>
+                        <p style="color: var(--almost-black); font-size: 0.875rem; opacity: 0.8;">Digital Marketer Co-Founder</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
