@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Protected Now - Emergency Payment Setup | Stripe Protection</title>
+    <meta name="description" content="Get emergency payment processing setup in 24-48 hours. Apply now for multi-bank redundancy protection.">
+    
+    <style>
+        :root {
+            --brand-green: #1C9C48;
+            --brand-blue-primary: #4169B2;
+            --brand-blue-dark: #1F4DA1; 
+            --brand-diamond: #B1D1F5;
+            --warning-orange: #F59E0B;
+            --white: #FFFFFF;
+            --ink: #0E0E0E;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--ink);
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-blue-primary) 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+        }
+        
+        .urgency-banner {
+            background: var(--warning-orange);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 40px;
+            border-radius: 8px;
+        }
+        
+        .form-container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--brand-blue-dark);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--brand-green);
+        }
+        
+        .submit-btn {
+            background: var(--warning-orange);
+            color: var(--white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .submit-btn:hover {
+            background: #e88b00;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(249, 158, 11, 0.4);
+        }
+        
+        .contact-info {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .contact-info h3 {
+            color: var(--brand-blue-dark);
+            margin-bottom: 20px;
+        }
+        
+        .contact-info a {
+            color: var(--brand-green);
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            margin: 10px 0;
+            font-size: 1.125rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--brand-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-container,
+            .contact-info {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Get Protected Now</h1>
+            <p>Emergency Payment Processing Setup</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <a href="/" class="back-link">← Back to Homepage</a>
+        
+        <div class="urgency-banner">
+            🚨 Processor holding your funds? We can help in 24-48 hours!
+        </div>
+        
+        <div class="form-container">
+            <h2 style="color: var(--brand-blue-dark); margin-bottom: 24px;">Get Your Placement Plan</h2>
+            
+            <form action="#" method="POST" id="applicationForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Business Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company">Company Name *</label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="volume">Monthly Processing Volume *</label>
+                    <select id="volume" name="volume" required>
+                        <option value="">Select volume range</option>
+                        <option value="under-50k">Under $50K</option>
+                        <option value="50k-250k">$50K - $250K</option>
+                        <option value="250k-1m">$250K - $1M</option>
+                        <option value="1m-5m">$1M - $5M</option>
+                        <option value="5m-plus">$5M+</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="industry">Business Industry *</label>
+                    <select id="industry" name="industry" required>
+                        <option value="">Select your industry</option>
+                        <option value="coaching">Coaching & Education</option>
+                        <option value="supplements">Supplements & Health</option>
+                        <option value="continuity">Membership & Continuity</option>
+                        <option value="ecommerce">E-commerce</option>
+                        <option value="telehealth">Telehealth & Medical</option>
+                        <option value="crypto">Cryptocurrency & Fintech</option>
+                        <option value="marketing">Digital Marketing</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="urgency">Current Situation *</label>
+                    <select id="urgency" name="urgency" required>
+                        <option value="">Select your situation</option>
+                        <option value="emergency">🚨 EMERGENCY: Processor froze my account</option>
+                        <option value="planning">Planning for redundancy</option>
+                        <option value="expanding">Expanding to new markets</option>
+                        <option value="compliance">Compliance issues</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Tell us about your situation</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Describe your current payment processing challenges, any holds or restrictions, and what you need most urgently..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Get My Placement Plan</button>
+            </form>
+        </div>
+        
+        <div class="contact-info">
+            <h3>Need Immediate Help?</h3>
+            <a href="tel:8008054949">📞 Emergency Line: (800) 805-4949</a>
+            <a href="mailto:emergency@stripeprotection.com">✉️ emergency@stripeprotection.com</a>
+            <p style="margin-top: 20px; color: #666; font-size: 0.875rem;">
+                Average response time: Under 2 hours during business hours
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Store UTM data if available
+            const utmData = JSON.parse(localStorage.getItem('utmData') || '{}');
+            data.utm_data = utmData;
+            
+            // Track form submission
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'conversion', {
+                    send_to: 'AW-CONVERSION_ID/FORM_SUBMIT',
+                    event_category: 'Form',
+                    event_label: 'application-submitted'
+                });
+            }
+            
+            // Here you would normally send to your backend/CRM
+            console.log('Form submitted:', data);
+            
+            // Show success message (replace with actual form handling)
+            alert('Thank you! We\'ll contact you within 2 hours to discuss your placement plan.');
+            
+            // Optional: redirect to thank you page
+            // window.location.href = '/thank-you.html';
+        });
+    </script>
+</body>
+</html>

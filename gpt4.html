@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Payments That Don’t Pause — Underwrite First, Route Across Many | StripeProtection</title>
+  <meta name="description" content="Stop single‑processor surprises. We place you with banks that underwrite first, then run multiple merchant accounts in one gateway with automatic routing. Designed for stability and scale." />
+  <link rel="stylesheet" href="stripeprotectionGPT/styles.css" />
+
+  <meta property="og:title" content="Payments That Don’t Pause" />
+  <meta property="og:description" content="Underwrite first across 30+ banks. Multiple merchant accounts, one gateway. Automatic routing keeps you selling." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://stripeprotection.com/gpt4.html" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"What’s included in the application?","acceptedAnswer":{"@type":"Answer","text":"One application covers multiple merchant accounts. We use it to match your business model, volume, AOV, fulfillment, and countries to the right underwriting partners."}},
+      {"@type":"Question","name":"Why not just stay with an aggregator?","acceptedAnswer":{"@type":"Answer","text":"Aggregators approve quickly with little underwriting and manage risk later with holds, reserves, or closures. If continuity and scale matter, underwrite first and spread volume across multiple accounts."}},
+      {"@type":"Question","name":"Can we route existing accounts?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can load existing merchant accounts into our gateway and add new capacity across additional banks as needed."}}
+    ]
+  }
+  </script>
+
+  <style>
+    /* GPT-4 Variant — elevated layout + micro-interactions; no external fonts */
+    :root{
+      --brand-green:#1C9C48; /* Confirm exact */
+      --brand-blue-primary:#1F72D1; /* TODO confirm */
+      --brand-blue-dark:#174C95; /* TODO confirm */
+      --brand-diamond:#B1D1F5;
+      --brand-platinum:#CCCCCC;
+      --ink:#0E0E0E;
+      --bg: #FBFEFF;
+      --radius: 14px;
+    }
+    body{ font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif; color: var(--ink); background: var(--bg); }
+    a:focus, button:focus { outline: 3px solid var(--brand-blue-primary); outline-offset: 2px; }
+    header .brand{ display:none; } /* neutral */
+
+    /* Premium hero split */
+    .hero4{
+      position: relative; isolation: isolate; overflow: hidden;
+      padding: 84px 0 56px; background: linear-gradient(160deg,#ffffff 0%,#f6fbff 60%, #eef6ff 100%);
+    }
+    .hero4:after{
+      content:""; position:absolute; inset:auto -10% -30% -10%; height:380px; background: radial-gradient(60% 60% at 50% 50%, rgba(177,209,245,.45) 0%, rgba(177,209,245,0) 80%);
+      z-index:-1; filter: blur(10px);
+    }
+    .hero-grid{ display:grid; gap:28px; grid-template-columns: 1fr; }
+    @media(min-width: 980px){ .hero-grid{ grid-template-columns: 1.1fr .9fr; align-items:center; } }
+    .kicker{ color: var(--brand-green); font-weight: 800; letter-spacing:.35px; text-transform: uppercase; font-size:.82rem }
+    .hero-title{ font-size: clamp(2.1rem, 4vw, 3rem); line-height:1.08; margin:.5rem 0 .8rem; color:#0d1b2a; font-weight: 850; }
+    .hero-sub{ font-size: 1.15rem; color:#242424; max-width: 46ch }
+    .hero-ctas{ margin-top: 22px; display:flex; gap:12px; flex-wrap:wrap }
+    .btn{ border-radius: 12px; padding: 13px 18px; font-weight: 800 }
+    .btn[data-cta="get-started"]{ background: var(--brand-green); color:#fff; border:1px solid rgba(0,0,0,0.04) }
+    .btn.btn-secondary{ background:#fff; color: var(--brand-blue-dark); border:1px solid var(--brand-blue-primary) }
+
+    /* SAFE panel */
+    .safe-panel{ background:#ffffff; border:1px solid #e6eef9; border-radius: var(--radius); padding:18px; box-shadow: 0 6px 26px rgba(17,41,86,0.06); }
+    .safe-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px }
+    .safe-item{ background:#f7fbff; border:1px solid #e1ecfa; border-radius:12px; padding:12px 14px }
+    .safe-item b{ display:block; color:#0c2b55; margin-bottom:2px }
+    @media(min-width:660px){ .safe-grid{ grid-template-columns:repeat(4,1fr) } }
+
+    /* Trust chips */
+    .trust{ margin-top:20px }
+    .trust h2{ font-size:1rem; margin:.2rem 0 8px; color:#2b2b2b }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px 10px }
+    .chip{ background:#f4f6f9; border:1px solid #e1e5ea; border-radius:999px; padding:7px 12px; font-weight:700; color:#444; filter:grayscale(100%); }
+
+    /* Section shells */
+    section{ padding: 36px 0 }
+    h2{ font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin: 0 0 10px; color:#0d1b2a; }
+    .muted{ color:#505050 }
+    .grid{ display:grid; gap:16px }
+    .two{ grid-template-columns: 1fr }
+    @media(min-width:960px){ .two{ grid-template-columns: 1fr 1fr } }
+    .card{ background:#fff; border:1px solid var(--brand-platinum); border-radius:12px; padding:18px; }
+    .list-check{ list-style:none; padding:0; margin:0 }
+    .list-check li{ padding-left:28px; position:relative; margin:.55rem 0 }
+    .list-check li:before{ content:""; width:18px; height:18px; border-radius:50%; background:var(--brand-green); position:absolute; left:0; top:.2rem; box-shadow:0 0 0 2px #e9f7ee inset }
+
+    /* Comparison toggle */
+    .compare{ background:#ffffff; border:1px solid #e6eef9; border-radius: var(--radius); padding: 16px }
+    .tabbar{ display:flex; gap:8px; margin-bottom:12px }
+    .tab{ flex:1; text-align:center; padding:10px 12px; border-radius:10px; border:1px solid #d8e2f1; cursor:pointer; user-select:none; font-weight:800 }
+    .tab[aria-selected="true"]{ background:#f2f7ff; border-color:#bcd1f4; color:#0c2b55 }
+    .rows{ display:grid; gap:10px }
+    .row{ display:grid; gap:10px; grid-template-columns: 1fr }
+    @media(min-width:860px){ .row{ grid-template-columns: .9fr 1.1fr } }
+    .row b{ display:block; color:#0c2b55 }
+
+    /* Final CTA */
+    .final{ background: linear-gradient(180deg, #f4fbf6 0%, #ffffff 100%); border-top:1px solid #d8f0e2; border-bottom:1px solid #e9f7ee }
+  </style>
+</head>
+<body>
+  <div class="topnote">Not affiliated with Stripe, Inc. “Stripe” is a trademark of Stripe, Inc. Names/logos shown in grayscale with permission.</div>
+  <header>
+    <div class="wrap nav">
+      <div class="brand" aria-hidden="true"></div>
+      <a href="https://www.easypaydirect.com/merchant-accounts/high-risk-credit-card-processing/?partnerId=117263&linkVisitId=179996" class="btn" data-cta="get-started">Get Started</a>
+    </div>
+  </header>
+
+  <section class="hero4">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kicker">Built For Stability, Not Surprises</div>
+        <h1 class="hero-title">Payments That Don’t Pause.</h1>
+        <p class="hero-sub">We underwrite first across 30+ banks and run multiple merchant accounts inside one gateway. If one provider imposes a hold or reserve, traffic re‑routes—so you keep getting paid.</p>
+        <div class="hero-ctas">
+          <a href="https://www.easypaydirect.com/merchant-accounts/high-risk-credit-card-processing/?partnerId=117263&linkVisitId=179996" class="btn" data-cta="get-started">Get Started</a>
+          <a href="#why" class="btn btn-secondary">Why this works</a>
+        </div>
+
+        <div class="trust" aria-labelledby="trust-h">
+          <h2 id="trust-h">Trusted by leaders in education, media, and commerce</h2>
+          <div class="chips" role="list">
+            <span class="chip" role="listitem">Tony Robbins</span>
+            <span class="chip" role="listitem">Frank Kern</span>
+            <span class="chip" role="listitem">Digital Marketer</span>
+            <span class="chip" role="listitem">Ryan Pineda</span>
+            <span class="chip" role="listitem">Fortune Builders</span>
+            <span class="chip" role="listitem">Ben Greenfield</span>
+            <span class="chip" role="listitem">MawerCapital</span>
+            <span class="chip" role="listitem">Clever Investor</span>
+            <span class="chip" role="listitem">AGORA Financial</span>
+            <span class="chip" role="listitem">Infusionsoft</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="safe-panel" aria-label="SAFE model">
+        <div class="kicker" style="color:#0c2b55">SAFE model</div>
+        <h2 style="margin-top:4px">Redundancy you can count on</h2>
+        <div class="safe-grid" style="margin-top:10px">
+          <div class="safe-item"><b>S — Stability</b>Underwrite first. Avoid surprise freezes.</div>
+          <div class="safe-item"><b>A — Availability</b>Multiple accounts stay live during issues.</div>
+          <div class="safe-item"><b>F — Flexibility</b>Route by bank, BIN, country, or risk.</div>
+          <div class="safe-item"><b>E — Endurance</b>Scale spikes without a single point of failure.</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <h2>Why fast setup often ends in a freeze</h2>
+      <div class="grid two">
+        <div class="card">
+          <strong>Approve fast → control later</strong>
+          <p class="muted">Aggregators (PayFacs) approve quickly with little/no underwriting; later they manage risk through holds, reserves, or sudden closures.</p>
+        </div>
+        <div class="card">
+          <strong>Chargebacks arrive months later</strong>
+          <p class="muted">Card brands allow disputes long after delivery. Providers carry that liability if the merchant disappears—hence aggressive controls without upfront underwriting.</p>
+        </div>
+        <div class="card">
+          <strong>Category/MCC derisking</strong>
+          <p class="muted">Entire verticals can be tightened overnight due to monitoring programs—impacting continuity, telehealth/GLP‑1, supplements, vape/CBD, and more.</p>
+        </div>
+      </div>
+      <div class="cta-block" style="margin-top:18px">
+        <strong>Prefer stability over speed?</strong> Start a placement plan and go live with redundancy built‑in.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="grid two">
+        <div>
+          <h2>The difference</h2>
+          <ul class="list-check">
+            <li><strong>30+ banks that understand your model.</strong> Match underwriting to your industry and volume profile.</li>
+            <li><strong>Multiple merchant accounts, one gateway.</strong> Automatic routing keeps transactions flowing during issues.</li>
+            <li><strong>Single point of contact.</strong> Optimize descriptors, reduce declines, and handle disputes with a plan.</li>
+          </ul>
+        </div>
+        <div class="compare" aria-label="Compare approaches">
+          <div class="tabbar" role="tablist">
+            <div class="tab" role="tab" aria-selected="true" data-tab="underwrite">Underwrite First</div>
+            <div class="tab" role="tab" aria-selected="false" data-tab="aggregate">Aggregator</div>
+          </div>
+          <div class="rows" id="rows">
+            <!-- rows get swapped by tiny JS; content duplicated below for a11y -->
+          </div>
+          <template id="tpl-underwrite">
+            <div class="row"><div><b>Go live with a plan</b>Known descriptors, chargeback playbook, capacity mapped.</div><div><b>Redundancy built‑in</b>Multiple accounts; incidents don’t stop sales.</div></div>
+            <div class="row"><div><b>Predictable reviews</b>Underwriting is front‑loaded, not a surprise.</div><div><b>Scale with confidence</b>Add accounts for promos, seasonality, or new SKUs.</div></div>
+          </template>
+          <template id="tpl-aggregate">
+            <div class="row"><div><b>Approve fast</b>Little/no underwriting at signup.</div><div><b>Control later</b>Holds, reserves, closures during uncertainty.</div></div>
+            <div class="row"><div><b>Opaque thresholds</b>Program limits can shift overnight.</div><div><b>Single point of failure</b>One provider’s issue = paused cashflow.</div></div>
+          </template>
+          <noscript>
+            <div class="row"><div><b>Underwrite First:</b> Known descriptors, redundancy built‑in.</div><div><b>Aggregator:</b> Approve fast, control later; single point of failure.</div></div>
+          </noscript>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Who we help</h2>
+      <div class="pills">
+        <span class="pill">Memberships & continuity</span>
+        <span class="pill">Telehealth / GLP‑1</span>
+        <span class="pill">Supplements</span>
+        <span class="pill">Coaching & education</span>
+        <span class="pill">Digital utilities / tech support</span>
+        <span class="pill">Vape / CBD</span>
+        <span class="pill">High‑ticket e‑commerce</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>How it works</h2>
+      <div class="grid two">
+        <div class="card"><strong>1) Get Started</strong><br/>One application covers multiple merchant accounts.</div>
+        <div class="card"><strong>2) Right‑fit underwriting</strong><br/>We place you with the right bank partners across 30+ options.</div>
+        <div class="card"><strong>3) Route & protect</strong><br/>Run multiple merchant accounts in one gateway with automatic routing.</div>
+        <div class="card"><strong>4) Grow with confidence</strong><br/>Add capacity for spikes; keep ratios within thresholds.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">FAQ</h2>
+    <div class="faq">
+      <p class="q">What’s the application?</p>
+      <p class="a">One application covers multiple merchant accounts. We match you to underwriting partners that fit your model and volume.</p>
+      <p class="q">Do I really need multiple accounts?</p>
+      <p class="a">If you do ~50k+/mo, sell high‑ticket/regulated products, or see spikes, multi‑MID redundancy keeps you transacting during holds.</p>
+      <p class="q">Can I bring my existing accounts?</p>
+      <p class="a">Yes. We can route existing accounts in one gateway and add capacity across additional banks.</p>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap" style="text-align:center; padding:36px 0">
+      <h2>Ready for payments that don’t pause?</h2>
+      <p>Underwrite first. Diversify across multiple merchant accounts. Route volume automatically.</p>
+      <p style="margin-top:14px">
+        <a class="btn" data-cta="get-started" href="https://www.easypaydirect.com/merchant-accounts/high-risk-credit-card-processing/?partnerId=117263&linkVisitId=179996">Get Started</a>
+      </p>
+      <p class="muted" style="margin-top:8px">Get a placement plan (2 min)</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="muted">Not affiliated with Stripe, Inc. “Stripe” is a trademark of Stripe, Inc. Names/logos used in grayscale with permission.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Minimal JS: CTA tracking + comparison toggle
+    (function(){
+      try{
+        // CTA tracking
+        document.querySelectorAll('[data-cta="get-started"]').forEach(function(el){
+          el.addEventListener('click', function(){ if(window.dataLayer){ window.dataLayer.push({event:'cta_click', cta:'get_started'}); } });
+        });
+        // Comparison swapper
+        var rows = document.getElementById('rows');
+        var tplU = document.getElementById('tpl-underwrite');
+        var tplA = document.getElementById('tpl-aggregate');
+        function render(t){ rows.innerHTML = (t==='underwrite' ? tplU.innerHTML : tplA.innerHTML); }
+        render('underwrite');
+        document.querySelectorAll('.tab').forEach(function(tab){
+          tab.addEventListener('click', function(){
+            document.querySelectorAll('.tab').forEach(function(t){ t.setAttribute('aria-selected','false'); });
+            tab.setAttribute('aria-selected','true');
+            render(tab.dataset.tab);
+          });
+        });
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>
+
