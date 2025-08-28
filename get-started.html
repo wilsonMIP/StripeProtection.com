@@ -843,12 +843,8 @@
             });
 
             // Build hidden form to handoff to EPD
-            // Post directly to EPD signup with partnerId to avoid losing POST body on redirect
-            let epdUrl = 'https://emap.easypaydirect.com/signup?partnerId=117263';
-            const lvid = getLinkVisitId();
-            if (lvid) {
-                epdUrl += `&linkVisitId=${encodeURIComponent(lvid)}`;
-            }
+            // Use EPD's go endpoint which is designed for cross-origin posting without CSRF issues
+            const epdUrl = 'https://emap.easypaydirect.com/go/signup/CjlDEl';
             const postForm = document.createElement('form');
             postForm.method = 'POST';
             postForm.action = epdUrl;
