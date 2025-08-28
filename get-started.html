@@ -167,9 +167,11 @@
                 padding: 24px;
             }
         }
-    </style>
+</style>
 </head>
 <body>
+    <!-- EPD tracking to establish linkVisitId attribution -->
+    <script src="https://emap.easypaydirect.com/assets/js/tracking.js"></script>
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/intl-tel-input@22.0.2/build/css/intlTelInput.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <div class="header">
         <div class="container">
@@ -598,6 +600,27 @@
             return (str || '').toString().replace(/[^0-9]/g, '');
         }
 
+        function getCookie(name) {
+            const m = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()\[\]\\/\+^])/g, '\\$1') + '=([^;]*)'));
+            return m ? decodeURIComponent(m[1]) : null;
+        }
+
+        function getLinkVisitId() {
+            try {
+                const p = getQueryParams();
+                if (p.linkVisitId) return p.linkVisitId;
+            } catch {}
+            try {
+                const ls = localStorage.getItem('linkVisitId');
+                if (ls) return ls;
+            } catch {}
+            try {
+                const c = getCookie('linkVisitId');
+                if (c) return c;
+            } catch {}
+            return '';
+        }
+
         // Show/hide state based on country
         const countryEl = document.getElementById('country');
         const stateGroup = document.getElementById('state_group');
@@ -820,7 +843,12 @@
             });
 
             // Build hidden form to handoff to EPD
-            const epdUrl = 'https://emap.easypaydirect.com/go/signup/CjlDEl';
+            // Post directly to EPD signup with partnerId to avoid losing POST body on redirect
+            let epdUrl = 'https://emap.easypaydirect.com/signup?partnerId=117263';
+            const lvid = getLinkVisitId();
+            if (lvid) {
+                epdUrl += `&linkVisitId=${encodeURIComponent(lvid)}`;
+            }
             const postForm = document.createElement('form');
             postForm.method = 'POST';
             postForm.action = epdUrl;
