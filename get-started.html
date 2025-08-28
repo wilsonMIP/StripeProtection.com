@@ -170,6 +170,7 @@
     </style>
 </head>
 <body>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/intl-tel-input@22.0.2/build/css/intlTelInput.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <div class="header">
         <div class="container">
             <h1>Get Protected Now</h1>
@@ -186,73 +187,379 @@
         
         <div class="form-container">
             <h2 style="color: var(--brand-blue-dark); margin-bottom: 24px;">Get Your Placement Plan</h2>
-            
+            <div class="step-progress" style="display:flex; gap:12px; align-items:center; margin: 0 0 16px 0;">
+                <div class="step-dot" data-step-dot="1" style="width:28px;height:28px;border-radius:50%;background:#e2e8f0;color:#0f172a;display:flex;align-items:center;justify-content:center;font-weight:700;">1</div>
+                <div style="flex:1;height:4px;background:#e2e8f0;border-radius:2px;" data-step-bar="1"></div>
+                <div class="step-dot" data-step-dot="2" style="width:28px;height:28px;border-radius:50%;background:#e2e8f0;color:#0f172a;display:flex;align-items:center;justify-content:center;font-weight:700;">2</div>
+                <div style="flex:1;height:4px;background:#e2e8f0;border-radius:2px;" data-step-bar="2"></div>
+                <div class="step-dot" data-step-dot="3" style="width:28px;height:28px;border-radius:50%;background:#e2e8f0;color:#0f172a;display:flex;align-items:center;justify-content:center;font-weight:700;">3</div>
+            </div>
+
             <form action="#" method="POST" id="applicationForm">
-                <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" required>
+                <!-- Step 1: Personal Details -->
+                <div class="form-step" data-step="1">
+                  <div class="form-group">
+                      <label for="first_name">First Name *</label>
+                      <input type="text" id="first_name" name="first_name" required placeholder="First Name">
+                  </div>
+                  <div class="form-group">
+                      <label for="last_name">Last Name *</label>
+                      <input type="text" id="last_name" name="last_name" required placeholder="Last Name">
+                  </div>
+                  <div class="form-group">
+                      <label for="email">Business Email *</label>
+                      <input type="email" id="email" name="email" required placeholder="your@email.com">
+                  </div>
+                  <div class="form-group">
+                      <label for="phone">Phone Number *</label>
+                      <input type="tel" id="phone" name="phone" required inputmode="tel" placeholder="(555) 555-5555">
+                  </div>
+                  <button type="button" class="submit-btn" id="nextStep1">Next</button>
                 </div>
-                
-                <div class="form-group">
-                    <label for="email">Business Email *</label>
-                    <input type="email" id="email" name="email" required>
+
+                <!-- Step 2: Business Details -->
+                <div class="form-step" data-step="2" style="display:none;">
+                  <div class="form-group">
+                      <label for="company_name">Company Name *</label>
+                      <input type="text" id="company_name" name="name" required placeholder="Company Name">
+                  </div>
+                  <div class="form-group">
+                      <label for="website">Company Website *</label>
+                      <input type="text" id="website" name="website" required placeholder="https://example.com">
+                  </div>
+                  <div class="form-group">
+                      <label for="country">Formation Country *</label>
+                      <select id="country" name="country" required>
+                        <option value="" selected>Please Select</option>
+                        <option value="1">United States</option>
+                        <option value="2">Canada</option>
+                        <option value="3">Puerto Rico</option>
+                        <option value="4">Afghanistan</option>
+                        <option value="5">Albania</option>
+                        <option value="6">Algeria</option>
+                        <option value="7">American Samoa</option>
+                        <option value="8">Andorra</option>
+                        <option value="9">Angola</option>
+                        <option value="10">Anguilla</option>
+                        <option value="11">Antarctica</option>
+                        <option value="12">Antigua and Barbuda</option>
+                        <option value="13">Argentina</option>
+                        <option value="14">Armenia</option>
+                        <option value="15">Aruba</option>
+                        <option value="16">Australia</option>
+                        <option value="17">Austria</option>
+                        <option value="18">Azerbaijan</option>
+                        <option value="19">Bahamas</option>
+                        <option value="20">Bahrain</option>
+                        <option value="21">Bangladesh</option>
+                        <option value="22">Barbados</option>
+                        <option value="23">Belarus</option>
+                        <option value="24">Belgium</option>
+                        <option value="25">Belize</option>
+                        <option value="26">Benin</option>
+                        <option value="27">Bermuda</option>
+                        <option value="28">Bhutan</option>
+                        <option value="29">Bolivia</option>
+                        <option value="30">Bonaire, Sint Eustatius and Saba</option>
+                        <option value="31">Bosnia and Herzegovina</option>
+                        <option value="32">Botswana</option>
+                        <option value="33">Bouvet Island</option>
+                        <option value="34">Brazil</option>
+                        <option value="35">British Indian Ocean Territory</option>
+                        <option value="36">Brunei Darussalam</option>
+                        <option value="37">Bulgaria</option>
+                        <option value="38">Burkina Faso</option>
+                        <option value="39">Burundi</option>
+                        <option value="40">Cabo Verde</option>
+                        <option value="41">Cambodia</option>
+                        <option value="42">Cameroon</option>
+                        <option value="43">Cayman Islands</option>
+                        <option value="44">Central African Republic</option>
+                        <option value="45">Chad</option>
+                        <option value="46">Chile</option>
+                        <option value="47">China</option>
+                        <option value="48">Christmas Island</option>
+                        <option value="49">Cocos Islands</option>
+                        <option value="50">Colombia</option>
+                        <option value="51">Comoros</option>
+                        <option value="52">Congo</option>
+                        <option value="54">Cook Islands</option>
+                        <option value="55">Costa Rica</option>
+                        <option value="56">Croatia</option>
+                        <option value="57">Cuba</option>
+                        <option value="58">Curaçao</option>
+                        <option value="59">Cyprus</option>
+                        <option value="60">Czechia</option>
+                        <option value="61">Côte d'Ivoire</option>
+                        <option value="62">Denmark</option>
+                        <option value="63">Djibouti</option>
+                        <option value="64">Dominica</option>
+                        <option value="65">Dominican Republic</option>
+                        <option value="66">Ecuador</option>
+                        <option value="67">Egypt</option>
+                        <option value="68">El Salvador</option>
+                        <option value="69">Equatorial Guinea</option>
+                        <option value="70">Eritrea</option>
+                        <option value="71">Estonia</option>
+                        <option value="72">Eswatini</option>
+                        <option value="73">Ethiopia</option>
+                        <option value="74">Falkland Islands [Malvinas]</option>
+                        <option value="75">Faroe Islands</option>
+                        <option value="76">Fiji</option>
+                        <option value="77">Finland</option>
+                        <option value="78">France</option>
+                        <option value="79">French Guiana</option>
+                        <option value="80">French Polynesia</option>
+                        <option value="81">French Sourn Territories</option>
+                        <option value="82">Gabon</option>
+                        <option value="83">Gambia</option>
+                        <option value="84">Georgia</option>
+                        <option value="85">Germany</option>
+                        <option value="86">Ghana</option>
+                        <option value="87">Gibraltar</option>
+                        <option value="88">Greece</option>
+                        <option value="89">Greenland</option>
+                        <option value="90">Grenada</option>
+                        <option value="91">Guadeloupe</option>
+                        <option value="92">Guam</option>
+                        <option value="93">Guatemala</option>
+                        <option value="94">Guernsey</option>
+                        <option value="95">Guinea</option>
+                        <option value="96">Guinea-Bissau</option>
+                        <option value="97">Guyana</option>
+                        <option value="98">Haiti</option>
+                        <option value="99">Heard Island and McDonald Islands</option>
+                        <option value="100">Holy See</option>
+                        <option value="101">Honduras</option>
+                        <option value="102">Hong Kong</option>
+                        <option value="103">Hungary</option>
+                        <option value="104">Iceland</option>
+                        <option value="105">India</option>
+                        <option value="106">Indonesia</option>
+                        <option value="107">Iran</option>
+                        <option value="108">Iraq</option>
+                        <option value="109">Ireland</option>
+                        <option value="110">Isle of Man</option>
+                        <option value="111">Israel</option>
+                        <option value="112">Italy</option>
+                        <option value="113">Jamaica</option>
+                        <option value="114">Japan</option>
+                        <option value="115">Jersey</option>
+                        <option value="116">Jordan</option>
+                        <option value="117">Kazakhstan</option>
+                        <option value="118">Kenya</option>
+                        <option value="119">Kiribati</option>
+                        <option value="120">North Korea</option>
+                        <option value="121">South Korea</option>
+                        <option value="122">Kuwait</option>
+                        <option value="123">Kyrgyzstan</option>
+                        <option value="124">Lao People's Democratic Republic</option>
+                        <option value="125">Latvia</option>
+                        <option value="126">Lebanon</option>
+                        <option value="127">Lesotho</option>
+                        <option value="128">Liberia</option>
+                        <option value="129">Libya</option>
+                        <option value="130">Liechtenstein</option>
+                        <option value="131">Lithuania</option>
+                        <option value="132">Luxembourg</option>
+                        <option value="133">Macao</option>
+                        <option value="134">Madagascar</option>
+                        <option value="135">Malawi</option>
+                        <option value="136">Malaysia</option>
+                        <option value="137">Maldives</option>
+                        <option value="138">Mali</option>
+                        <option value="139">Malta</option>
+                        <option value="140">Marshall Islands</option>
+                        <option value="141">Martinique</option>
+                        <option value="142">Mauritania</option>
+                        <option value="143">Mauritius</option>
+                        <option value="144">Mayotte</option>
+                        <option value="145">Mexico</option>
+                        <option value="146">Micronesia</option>
+                        <option value="147">Moldova</option>
+                        <option value="148">Monaco</option>
+                        <option value="149">Mongolia</option>
+                        <option value="150">Montenegro</option>
+                        <option value="151">Montserrat</option>
+                        <option value="152">Morocco</option>
+                        <option value="153">Mozambique</option>
+                        <option value="154">Myanmar</option>
+                        <option value="155">Namibia</option>
+                        <option value="156">Nauru</option>
+                        <option value="157">Nepal</option>
+                        <option value="158">Netherlands</option>
+                        <option value="159">New Caledonia</option>
+                        <option value="160">New Zealand</option>
+                        <option value="161">Nicaragua</option>
+                        <option value="162">Niger</option>
+                        <option value="163">Nigeria</option>
+                        <option value="164">Niue</option>
+                        <option value="165">Norfolk Island</option>
+                        <option value="166">Northern Mariana Islands</option>
+                        <option value="167">Norway</option>
+                        <option value="168">Oman</option>
+                        <option value="169">Pakistan</option>
+                        <option value="170">Palau</option>
+                        <option value="171">Palestine, State of</option>
+                        <option value="172">Panama</option>
+                        <option value="173">Papua New Guinea</option>
+                        <option value="174">Paraguay</option>
+                        <option value="175">Peru</option>
+                        <option value="176">Philippines</option>
+                        <option value="177">Pitcairn</option>
+                        <option value="178">Poland</option>
+                        <option value="179">Portugal</option>
+                        <option value="180">Qatar</option>
+                        <option value="181">Republic of North Macedonia</option>
+                        <option value="182">Romania</option>
+                        <option value="183">Russian Federation</option>
+                        <option value="184">Rwanda</option>
+                        <option value="185">Réunion</option>
+                        <option value="186">Saint Barthélemy</option>
+                        <option value="187">Saint Helena, Ascension and Tristan da Cunha</option>
+                        <option value="188">Saint Kitts and Nevis</option>
+                        <option value="189">Saint Lucia</option>
+                        <option value="190">Saint Martin</option>
+                        <option value="191">Saint Pierre and Miquelon</option>
+                        <option value="192">Saint Vincent and  Grenadines</option>
+                        <option value="193">Samoa</option>
+                        <option value="194">San Marino</option>
+                        <option value="195">Sao Tome and Principe</option>
+                        <option value="196">Saudi Arabia</option>
+                        <option value="197">Senegal</option>
+                        <option value="198">Serbia</option>
+                        <option value="199">Seychelles</option>
+                        <option value="200">Sierra Leone</option>
+                        <option value="201">Singapore</option>
+                        <option value="202">Sint Maarten</option>
+                        <option value="203">Slovakia</option>
+                        <option value="204">Slovenia</option>
+                        <option value="205">Solomon Islands</option>
+                        <option value="206">Somalia</option>
+                        <option value="207">South Africa</option>
+                        <option value="208">South Georgia and South Sandwich Islands</option>
+                        <option value="209">South Sudan</option>
+                        <option value="210">Spain</option>
+                        <option value="211">Sri Lanka</option>
+                        <option value="212">Sudan</option>
+                        <option value="213">Suriname</option>
+                        <option value="214">Svalbard and Jan Mayen</option>
+                        <option value="215">Sweden</option>
+                        <option value="216">Switzerland</option>
+                        <option value="217">Syrian Arab Republic</option>
+                        <option value="218">Taiwan</option>
+                        <option value="219">Tajikistan</option>
+                        <option value="220">Tanzania, United Republic of</option>
+                        <option value="221">Thailand</option>
+                        <option value="222">Timor-Leste</option>
+                        <option value="223">Togo</option>
+                        <option value="224">Tokelau</option>
+                        <option value="225">Tonga</option>
+                        <option value="226">Trinidad and Tobago</option>
+                        <option value="227">Tunisia</option>
+                        <option value="228">Turkey</option>
+                        <option value="229">Turkmenistan</option>
+                        <option value="230">Turks and Caicos Islands</option>
+                        <option value="231">Tuvalu</option>
+                        <option value="232">Uganda</option>
+                        <option value="233">Ukraine</option>
+                        <option value="234">United Arab Emirates</option>
+                        <option value="235">United Kingdom</option>
+                        <option value="236">United States Minor Outlying Islands</option>
+                        <option value="237">Uruguay</option>
+                        <option value="238">Uzbekistan</option>
+                        <option value="239">Vanuatu</option>
+                        <option value="240">Venezuela</option>
+                        <option value="241">Viet Nam</option>
+                        <option value="242">Virgin Islands</option>
+                        <option value="243">Virgin Islands</option>
+                        <option value="244">Wallis and Futuna</option>
+                        <option value="245">Western Sahara</option>
+                        <option value="246">Yemen</option>
+                        <option value="247">Zambia</option>
+                        <option value="248">Zimbabwe</option>
+                        <option value="249">Åland Islands</option>
+                      </select>
+                  </div>
+
+                  <div class="form-group" id="state_group" style="display:none;">
+                      <label for="business_state">Formation State *</label>
+                      <select id="business_state" name="business_state">
+                        <option value="">Select State</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="DC">District of Columbia</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="ME">Maine</option>
+                        <option value="MD">Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
+                      </select>
+                  </div>
+                  <div style="display:flex; gap:12px;">
+                    <button type="button" class="submit-btn" id="backTo1" style="background:#94a3b8;">Back</button>
+                    <button type="button" class="submit-btn" id="nextStep2">Next</button>
+                  </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" required>
+
+                <!-- Step 3: Sales & Referral -->
+                <div class="form-step" data-step="3" style="display:none;">
+                  <div class="form-group">
+                      <label for="annual_sales">Estimated Annual Sales (USD) *</label>
+                      <input type="text" id="annual_sales" name="annual_sales" required inputmode="numeric" placeholder="1,000,000">
+                  </div>
+                  <div class="form-group">
+                      <label for="promo_code">Referral Code (optional)</label>
+                      <input type="text" id="promo_code" name="promo_code" placeholder="Referral Code">
+                  </div>
+                  <div style="display:flex; gap:12px;">
+                    <button type="button" class="submit-btn" id="backTo2" style="background:#94a3b8;">Back</button>
+                    <button type="submit" class="submit-btn">Continue to Secure Signup</button>
+                  </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="company">Company Name *</label>
-                    <input type="text" id="company" name="company" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="volume">Monthly Processing Volume *</label>
-                    <select id="volume" name="volume" required>
-                        <option value="">Select volume range</option>
-                        <option value="under-50k">Under $50K</option>
-                        <option value="50k-250k">$50K - $250K</option>
-                        <option value="250k-1m">$250K - $1M</option>
-                        <option value="1m-5m">$1M - $5M</option>
-                        <option value="5m-plus">$5M+</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="industry">Business Industry *</label>
-                    <select id="industry" name="industry" required>
-                        <option value="">Select your industry</option>
-                        <option value="coaching">Coaching & Education</option>
-                        <option value="supplements">Supplements & Health</option>
-                        <option value="continuity">Membership & Continuity</option>
-                        <option value="ecommerce">E-commerce</option>
-                        <option value="telehealth">Telehealth & Medical</option>
-                        <option value="crypto">Cryptocurrency & Fintech</option>
-                        <option value="marketing">Digital Marketing</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="urgency">Current Situation *</label>
-                    <select id="urgency" name="urgency" required>
-                        <option value="">Select your situation</option>
-                        <option value="emergency">🚨 EMERGENCY: Processor froze my account</option>
-                        <option value="planning">Planning for redundancy</option>
-                        <option value="expanding">Expanding to new markets</option>
-                        <option value="compliance">Compliance issues</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Tell us about your situation</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Describe your current payment processing challenges, any holds or restrictions, and what you need most urgently..."></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn">Get My Placement Plan</button>
             </form>
         </div>
         
@@ -267,37 +574,296 @@
     </div>
     
     <script>
-        document.getElementById('applicationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Collect form data
-            const formData = new FormData(this);
+        // Load intl-tel-input
+        (function loadIntlTelInput(){
+            var s = document.createElement('script');
+            s.src = 'https://cdn.jsdelivr.net/npm/intl-tel-input@22.0.2/build/js/intlTelInput.min.js';
+            s.defer = true;
+            document.head.appendChild(s);
+        })();
+
+        // Helpers
+        function getQueryParams() {
+            const params = {};
+            const qs = window.location.search.substring(1);
+            qs.split('&').forEach(pair => {
+                if (!pair) return;
+                const [k, v] = pair.split('=').map(decodeURIComponent);
+                params[k] = v || '';
+            });
+            return params;
+        }
+
+        function formatNumberOnly(str) {
+            return (str || '').toString().replace(/[^0-9]/g, '');
+        }
+
+        // Show/hide state based on country
+        const countryEl = document.getElementById('country');
+        const stateGroup = document.getElementById('state_group');
+        const stateEl = document.getElementById('business_state');
+
+        function updateStateVisibility() {
+            // EPD uses 1 for United States
+            if (countryEl.value === '1') {
+                stateGroup.style.display = '';
+                stateEl.setAttribute('required', 'required');
+            } else {
+                stateGroup.style.display = 'none';
+                stateEl.removeAttribute('required');
+                stateEl.value = '';
+            }
+        }
+
+        countryEl.addEventListener('change', updateStateVisibility);
+        updateStateVisibility();
+
+        // Prefill referral code from URL if provided
+        const qp = getQueryParams();
+        if (qp.refid) {
+            try { document.getElementById('promo_code').value = qp.refid; } catch (e) {}
+        }
+
+        async function postToCaptureEndpoint(payload) {
+            const controller = new AbortController();
+            const t = setTimeout(() => controller.abort(), 2000); // 2s cap
+            try {
+                const res = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                    signal: controller.signal
+                });
+                clearTimeout(t);
+                return res.ok;
+            } catch (err) {
+                clearTimeout(t);
+                return false;
+            }
+        }
+
+        // Phone input with intl-tel-input
+        let iti = null;
+        const phoneEl = document.getElementById('phone');
+        function initPhone() {
+            if (window.intlTelInput && phoneEl && !iti) {
+                iti = window.intlTelInput(phoneEl, {
+                    initialCountry: 'us',
+                    utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@22.0.2/build/js/utils.js',
+                    preferredCountries: ['us','ca','gb'],
+                    separateDialCode: true
+                });
+            }
+        }
+        document.addEventListener('DOMContentLoaded', initPhone);
+        window.addEventListener('load', initPhone);
+
+        // Client session id for draft/final linkage
+        function getSessionId() {
+            try {
+                let id = localStorage.getItem('sp_session_id');
+                if (!id) {
+                    id = ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+                        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+                    );
+                    localStorage.setItem('sp_session_id', id);
+                }
+                return id;
+            } catch { return String(Date.now()); }
+        }
+        const sessionId = getSessionId();
+
+        // Multi-step controls
+        function showStep(n) {
+            document.querySelectorAll('.form-step').forEach(el => el.style.display = 'none');
+            const step = document.querySelector(`.form-step[data-step="${n}"]`);
+            if (step) step.style.display = '';
+            // update progress UI
+            const activeColor = '#1F4DA1';
+            const doneColor = '#93c5fd';
+            const baseColor = '#e2e8f0';
+            [1,2,3].forEach(i => {
+                const dot = document.querySelector(`[data-step-dot="${i}"]`);
+                const bar = document.querySelector(`[data-step-bar="${i}"]`);
+                if (!dot) return;
+                if (i < n) {
+                    dot.style.background = doneColor; dot.style.color = '#0e0e0e';
+                    if (bar) bar.style.background = doneColor;
+                } else if (i === n) {
+                    dot.style.background = activeColor; dot.style.color = '#fff';
+                    if (bar) bar.style.background = baseColor;
+                } else {
+                    dot.style.background = baseColor; dot.style.color = '#0f172a';
+                    if (bar) bar.style.background = baseColor;
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        function validateStep(n) {
+            const step = document.querySelector(`.form-step[data-step="${n}"]`);
+            if (!step) return true;
+            const inputs = step.querySelectorAll('input, select');
+            for (const el of inputs) {
+                if (el.hasAttribute('required') && !el.value) return false;
+            }
+            // For US state requirement
+            if (n === 2 && countryEl.value === '1' && !stateEl.value) return false;
+            return true;
+        }
+        document.addEventListener('click', (e) => {
+            if (e.target && e.target.id === 'nextStep1') {
+                if (!validateStep(1)) { alert('Please complete all required fields.'); return; }
+                showStep(2);
+            } else if (e.target && e.target.id === 'nextStep2') {
+                if (!validateStep(2)) { alert('Please complete all required fields.'); return; }
+                showStep(3);
+            } else if (e.target && e.target.id === 'backTo1') {
+                showStep(1);
+            } else if (e.target && e.target.id === 'backTo2') {
+                showStep(2);
+            }
+        });
+        showStep(1);
+
+        // Draft autosave machinery
+        let autoSaveTimer = null;
+        let lastSavedHash = '';
+        function hash(obj) { try { return JSON.stringify(obj); } catch { return ''; } }
+        function scheduleAutoSave(payload) {
+            if (autoSaveTimer) clearTimeout(autoSaveTimer);
+            autoSaveTimer = setTimeout(() => {
+                const h = hash(payload);
+                if (h !== lastSavedHash) {
+                    lastSavedHash = h;
+                    postToCaptureEndpoint({ id: sessionId, status: 'draft', source: 'stripeprotection-get-started', page: window.location.href, data: payload });
+                }
+            }, 1200);
+        }
+
+        function collectFormData() {
+            const form = document.getElementById('applicationForm');
+            const formData = new FormData(form);
             const data = {};
             for (let [key, value] of formData.entries()) {
                 data[key] = value;
             }
-            
-            // Store UTM data if available
+            // Provide E.164 phone if plugin ready
+            if (iti && phoneEl && phoneEl.value) {
+                const e164 = iti.getNumber();
+                if (e164) data.phone = e164;
+            }
+            // Normalize numbers
+            data.annual_sales = formatNumberOnly(data.annual_sales);
+            return data;
+        }
+
+        // Wire up change listeners for autosave
+        document.getElementById('applicationForm').addEventListener('input', () => {
+            const data = collectFormData();
+            scheduleAutoSave(data);
+        });
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden') {
+                const data = collectFormData();
+                // Try sending reliably on page hide
+                try {
+                    const payload = { id: sessionId, status: 'draft', source: 'stripeprotection-get-started', page: window.location.href, data };
+                    const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+                    navigator.sendBeacon('/api/submit', blob);
+                } catch {}
+            }
+        });
+
+        document.getElementById('applicationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const data = collectFormData();
+
+            // Attach UTM data if available
             const utmData = JSON.parse(localStorage.getItem('utmData') || '{}');
             data.utm_data = utmData;
-            
-            // Track form submission
+
+            // Attach refid from URL if present
+            const refid = qp.refid || qp.ref || '';
+
+            // Track form submission (optional)
             if (typeof gtag !== 'undefined') {
-                gtag('event', 'conversion', {
-                    send_to: 'AW-CONVERSION_ID/FORM_SUBMIT',
-                    event_category: 'Form',
-                    event_label: 'application-submitted'
-                });
+                try {
+                    gtag('event', 'conversion', {
+                        send_to: 'AW-CONVERSION_ID/FORM_SUBMIT',
+                        event_category: 'Form',
+                        event_label: 'application-submitted'
+                    });
+                } catch (err) {}
             }
-            
-            // Here you would normally send to your backend/CRM
-            console.log('Form submitted:', data);
-            
-            // Show success message (replace with actual form handling)
-            alert('Thank you! We\'ll contact you within 2 hours to discuss your placement plan.');
-            
-            // Optional: redirect to thank you page
-            // window.location.href = '/thank-you.html';
+
+            // Persist locally for our records (client-side cache)
+            try {
+                const submissions = JSON.parse(localStorage.getItem('sp_submissions') || '[]');
+                submissions.push({
+                    timestamp: new Date().toISOString(),
+                    data
+                });
+                localStorage.setItem('sp_submissions', JSON.stringify(submissions));
+            } catch (err) {
+                console.warn('Local save failed:', err);
+            }
+
+            // Send to our serverless endpoint for long-term storage (non-blocking)
+            postToCaptureEndpoint({
+                id: sessionId,
+                status: 'final',
+                source: 'stripeprotection-get-started',
+                page: window.location.href,
+                refid,
+                data,
+            });
+
+            // Build hidden form to handoff to EPD
+            const epdUrl = 'https://emap.easypaydirect.com/go/signup/CjlDEl';
+            const postForm = document.createElement('form');
+            postForm.method = 'POST';
+            postForm.action = epdUrl;
+            // Navigate current tab so users complete EPD flow
+            postForm.target = '_self';
+
+            function addField(name, value) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = name;
+                input.value = value == null ? '' : value;
+                postForm.appendChild(input);
+            }
+
+            // Required EPD fields
+            addField('first_name', data.first_name);
+            addField('last_name', data.last_name);
+            addField('email', data.email);
+            addField('phone', data.phone);
+            addField('name', data.name); // company name
+            addField('website', data.website);
+            // Country: pass through current select value (EPD expects numeric IDs)
+            addField('country', data.country);
+            // State only if US
+            if ((data.country && data.country === '1') && data.business_state) {
+                addField('business_state', data.business_state);
+            }
+            addField('annual_sales', data.annual_sales);
+
+            // Optional EPD fields
+            if (data.promo_code) addField('promo_code', data.promo_code);
+            if (refid) addField('refid', refid);
+
+            // No extra fields; only EPD-aligned fields are posted
+
+            // Submit handoff
+            document.body.appendChild(postForm);
+            try {
+                postForm.submit();
+            } catch (err) {
+                console.error('EPD handoff failed, redirecting to landing page...', err);
+                window.location.href = epdUrl;
+            }
         });
     </script>
 </body>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leads Admin</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; padding: 20px; background: #f6f7f9; }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    h1 { margin: 0 0 16px; color: #1f4da1; }
+    .controls { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    input, select, button { padding: 8px 10px; border-radius: 6px; border: 1px solid #d7dbe0; font-size: 14px; }
+    button { background: #1f4da1; color: #fff; border: none; cursor: pointer; }
+    button.secondary { background: #e2e8f0; color: #0f172a; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,.05); }
+    th, td { padding: 10px 12px; border-bottom: 1px solid #eef2f6; font-size: 13px; }
+    th { background: #f1f5f9; text-align: left; }
+    tr:hover td { background: #fafafa; }
+    .muted { color: #6b7280; font-size: 12px; }
+    .pill { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: #eef2ff; color: #3730a3; }
+    .row-actions { display: flex; gap: 8px; align-items: center; }
+    .nowrap { white-space: nowrap; }
+  </style>
+  <script>
+    function qp(name) { return new URLSearchParams(location.search).get(name) || ''; }
+    function fmtDate(s) { try { return new Date(s).toLocaleString(); } catch { return s || ''; } }
+    function toCSV(rows) {
+      if (!rows.length) return '';
+      const cols = [
+        'status','received_at','first_name','last_name','email','phone','name','website','country','business_state','annual_sales','industry','utm_source','utm_medium','utm_campaign','utm_term','utm_content','sp_urgency','sp_notes'
+      ];
+      const esc = v => '"' + String(v==null?'':v).replace(/"/g,'""') + '"';
+      const lines = [cols.join(',')];
+      for (const it of rows) {
+        const d = it.data || it;
+        lines.push(cols.map(c => {
+          switch(c) {
+            case 'status': return esc(it.status || '');
+            case 'received_at': return esc(it.received_at || '');
+            case 'utm_source': return esc((d.utm_data&&d.utm_data.utm_source)||'');
+            case 'utm_medium': return esc((d.utm_data&&d.utm_data.utm_medium)||'');
+            case 'utm_campaign': return esc((d.utm_data&&d.utm_data.utm_campaign)||'');
+            case 'utm_term': return esc((d.utm_data&&d.utm_data.utm_term)||'');
+            case 'utm_content': return esc((d.utm_data&&d.utm_data.utm_content)||'');
+            case 'sp_urgency': return esc(d.urgency||'');
+            case 'sp_notes': return esc(d.message||'');
+            default: return esc(d[c] || '');
+          }
+        }).join(','));
+      }
+      return lines.join('\n');
+    }
+    async function fetchLeads() {
+      const key = document.getElementById('key').value.trim();
+      const status = document.getElementById('status').value;
+      const limit = document.getElementById('limit').value;
+      const email = document.getElementById('email')?.value.trim() || '';
+      const utm = document.getElementById('utm')?.value.trim() || '';
+      const from = document.getElementById('from')?.value.trim() || '';
+      const to = document.getElementById('to')?.value.trim() || '';
+
+      const params = new URLSearchParams();
+      params.set('key', key);
+      if (status) params.set('status', status);
+      if (email) params.set('email', email);
+      if (utm) params.set('utm_source', utm);
+      if (from) params.set('from', new Date(from).toISOString());
+      if (to) params.set('to', new Date(new Date(to).getTime() + 24*60*60*1000 - 1).toISOString());
+      params.set('limit', limit);
+
+      const res = await fetch(`/api/leads-search?${params.toString()}`);
+      if (!res.ok) { alert('Auth failed or server error'); return; }
+      const data = await res.json();
+      const items = (data.items||[]);
+      renderTable(items);
+      window._lastItems = items;
+    }
+    function renderTable(items) {
+      const tbody = document.getElementById('rows');
+      tbody.innerHTML = '';
+      for (const it of items) {
+        const d = it.data || it;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="nowrap"><span class="pill">${it.status||''}</span></td>
+          <td class="nowrap">${fmtDate(it.received_at)}</td>
+          <td>${(d.first_name||'') + ' ' + (d.last_name||'')}</td>
+          <td>${d.email||''}</td>
+          <td>${d.phone||''}</td>
+          <td>${d.name||''}</td>
+          <td>${d.industry||''}</td>
+          <td>${(d.utm_data&&d.utm_data.utm_source)||''}</td>
+          <td class="row-actions">
+            <button class="secondary" onclick='alert(JSON.stringify(arguments[0], null, 2))'>View</button>
+          </td>
+        `;
+        // wire view button
+        tr.querySelector('button').onclick = () => {
+          const text = JSON.stringify(it, null, 2);
+          const w = window.open('', '_blank');
+          w.document.write(`<pre>${text.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}</pre>`);
+          w.document.close();
+        };
+        tbody.appendChild(tr);
+      }
+      document.getElementById('count').textContent = String(items.length);
+    }
+    function downloadCSV() {
+      const items = window._lastItems || [];
+      const csv = toCSV(items);
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+      a.download = `leads-${new Date().toISOString().slice(0,10)}.csv`;
+      a.click();
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      const keyFromQP = qp('key');
+      if (keyFromQP) document.getElementById('key').value = keyFromQP;
+    });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Leads Admin</h1>
+    <div class="controls">
+      <input id="key" type="password" placeholder="Admin key (required)" style="min-width:260px;" />
+      <select id="status"><option value="final">final</option><option value="draft">draft</option></select>
+      <input id="email" type="email" placeholder="Filter by email" />
+      <input id="utm" type="text" placeholder="Filter by utm_source" />
+      <input id="from" type="date" />
+      <input id="to" type="date" />
+      <select id="limit"><option>25</option><option selected>50</option><option>100</option><option>150</option><option>200</option></select>
+      <button onclick="fetchLeads()">Fetch</button>
+      <button class="secondary" onclick="downloadCSV()">Download CSV</button>
+      <span class="muted">Showing <span id="count">0</span> rows</span>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Received</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Company</th>
+          <th>Industry</th>
+          <th>UTM Source</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+</body>
+</html>
