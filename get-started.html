@@ -842,52 +842,14 @@
                 data,
             });
 
-            // Build hidden form to handoff to EPD
-            // Use EPD's go endpoint which is designed for cross-origin posting without CSRF issues
-            const epdUrl = 'https://emap.easypaydirect.com/go/signup/CjlDEl';
-            const postForm = document.createElement('form');
-            postForm.method = 'POST';
-            postForm.action = epdUrl;
-            // Navigate current tab so users complete EPD flow
-            postForm.target = '_self';
-
-            function addField(name, value) {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = name;
-                input.value = value == null ? '' : value;
-                postForm.appendChild(input);
+            // Redirect via GET to avoid CSRF (419) on EPD
+            // Note: This does not prefill fields (EPD disallows cross-origin POST without CSRF token)
+            let epdUrl = 'https://emap.easypaydirect.com/signup?partnerId=117263';
+            const lvid = getLinkVisitId();
+            if (lvid) {
+                epdUrl += `&linkVisitId=${encodeURIComponent(lvid)}`;
             }
-
-            // Required EPD fields
-            addField('first_name', data.first_name);
-            addField('last_name', data.last_name);
-            addField('email', data.email);
-            addField('phone', data.phone);
-            addField('name', data.name); // company name
-            addField('website', data.website);
-            // Country: pass through current select value (EPD expects numeric IDs)
-            addField('country', data.country);
-            // State only if US
-            if ((data.country && data.country === '1') && data.business_state) {
-                addField('business_state', data.business_state);
-            }
-            addField('annual_sales', data.annual_sales);
-
-            // Optional EPD fields
-            if (data.promo_code) addField('promo_code', data.promo_code);
-            if (refid) addField('refid', refid);
-
-            // No extra fields; only EPD-aligned fields are posted
-
-            // Submit handoff
-            document.body.appendChild(postForm);
-            try {
-                postForm.submit();
-            } catch (err) {
-                console.error('EPD handoff failed, redirecting to landing page...', err);
-                window.location.href = epdUrl;
-            }
+            window.location.href = epdUrl;
         });
     </script>
 </body>
