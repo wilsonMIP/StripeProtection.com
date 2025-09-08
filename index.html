@@ -870,6 +870,8 @@
             }
         }
     </style>
+    <!-- EPD tracking for linkVisitId attribution -->
+    <script src="https://emap.easypaydirect.com/assets/js/tracking.js"></script>
 </head>
 <body>
     <!-- Hero Section with Enhanced Urgency -->
@@ -880,7 +882,7 @@
                 <h1>Never Lose a Sale to Payment Processor Holds Again</h1>
                 <p class="power-subhead">The Multi-Bank Redundancy System That Keeps 8-Figure Businesses Running</p>
                 <p class="proof-line">Trusted by Frank Kern, Ryan Pineda, Fortune Builders & More</p>
-                <a href="/get-started.html" class="cta-primary" data-cta="get-started" style="position: relative; z-index: 2;">Get Protected Now</a>
+                <a href="https://emap.easypaydirect.com/signup?partnerId=117263" class="cta-primary" data-cta="get-started" style="position: relative; z-index: 2;">Get Protected Now</a>
             </div>
         </div>
     </section>
@@ -1105,7 +1107,7 @@
                 <li>One application covers all accounts - no multiple bank meetings</li>
             </ul>
             
-            <a href="/get-started.html" class="cta-primary" data-cta="get-started" style="position: relative; z-index: 2;">Get Protected Now</a>
+            <a href="https://emap.easypaydirect.com/signup?partnerId=117263" class="cta-primary" data-cta="get-started" style="position: relative; z-index: 2;">Get Protected Now</a>
             
             <p style="margin-top: 30px; font-size: 1.125rem; color: var(--almost-black);">
                 Join 500+ businesses processing $2.8B+ annually with bulletproof payment redundancy
@@ -1133,13 +1135,42 @@
 
     <!-- Floating Sticky CTA Button -->
     <div class="floating-cta" id="floatingCTA">
-        <a href="/get-started.html" class="cta-floating" data-cta="get-started-floating">
+        <a href="https://emap.easypaydirect.com/signup?partnerId=117263" class="cta-floating" data-cta="get-started-floating">
             <span class="cta-icon">🚀</span>
             <span>Get Protected Now</span>
         </a>
     </div>
 
     <script>
+        // Append EPD linkVisitId to outbound EPD links if available
+        (function() {
+            function withLinkVisitId(url) {
+                try {
+                    if (typeof getLinkVisitId === 'function') {
+                        const lvid = getLinkVisitId();
+                        if (lvid) {
+                            const u = new URL(url);
+                            u.searchParams.set('linkVisitId', lvid);
+                            return u.toString();
+                        }
+                    }
+                } catch (e) {}
+                return url;
+            }
+            // Enhance all EPD CTAs
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('a[href^="https://emap.easypaydirect.com/signup"]').forEach(a => {
+                    a.addEventListener('click', function(e) {
+                        // Ensure we include linkVisitId before navigation
+                        const newHref = withLinkVisitId(a.getAttribute('href'));
+                        if (newHref !== a.getAttribute('href')) {
+                            a.setAttribute('href', newHref);
+                        }
+                    }, { capture: true });
+                });
+            });
+        })();
+
         // Enhanced UTM Parameter Capture with Emergency Tracking
         (function() {
             const urlParams = new URLSearchParams(window.location.search);
